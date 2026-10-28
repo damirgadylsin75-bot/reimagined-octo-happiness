@@ -1,0 +1,15 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Luau
+        run: |
+          curl -fsSL https://github.com/luau-lang/luau/releases/download/0.744/luau-ubuntu.zip -o /tmp/luau.zip
+          unzip -o /tmp/luau.zip -d /tmp/luau
+          echo /tmp/luau >> "$GITHUB_PATH"
+      - run: luau tools/run_tests.luau
+      - uses: ok-nick/setup-aftman@v0.4.2
+      - run: mkdir -p build && rojo build -o build/drag2d.rbxlx
