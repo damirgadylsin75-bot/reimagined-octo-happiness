@@ -1,0 +1,5 @@
+# Limitations and status
+
+This is an incomplete foundation, not the requested game. M0 is incomplete: no camera or HUD and Rojo build has not been verified in this environment (release binaries could not be downloaded). M1 has preliminary car data, vector operations, constants, and tested torque interpolation; vehicle specs are not calibrated or integrated. M2–M8 are not implemented: no drivetrain, tires, suspension solver, headless races, renderer, server-authoritative race, tuning, saves, mobile controls, sound, or ghost. There are no 402 m measurements or balance claims. Roblox Studio integration and performance have not been tested. The test suite only covers the implemented curve functionality.
+
+The supplied specification also contains incompatible numerical demands: e.g. 700–1500 kg, springs 20–60 kN/m, 0.14 m travel, and 30–45% static compression cannot all hold for every combination (1500 kg at 20 kN/m needs ~0.368 m compression per axle). A `tanh` tire curve is monotonic and does not have a finite peak at slip 0.12; a post-peak model is needed for that test. These need explicit physical/balance choices in the next iteration.
